@@ -155,6 +155,23 @@
       color: #555;
     }
 
+    .bgm-player-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin-top: 20px;
+    }
+
+    /* 오디오 태그 자체를 커스터마이즈 */
+    .bgm-player-wrapper audio {
+      width: 100%;
+      border: none;
+      outline: none;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      padding: 6px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -162,6 +179,11 @@
       color: #666;
       font-size: 0.9rem;
       margin-top: auto;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bgm-player-wrapper audio {
+        background-color: #222;
+      }
     }
 
     /* 모바일 반응형 디자인 */
@@ -263,6 +285,13 @@
       <div class="section-text">
         <div class="section-title">🎵 BGM 생성 과정</div>
         <p>AI가 만든 BGM은 여러 과정을 거쳐 생성됩니다. 처음에는 사용자가 프롬프트를 입력하고, AI가 음악을 생성하는 과정을 거쳐 최종적인 결과물을 제공합니다.</p>
+        <!-- 🎵 BGM 오디오 플레이어 추가 -->
+        <div class="bgm-player-wrapper">
+          <audio id="bgm-audio" controls autoplay loop>
+            <source src="audio/sangs.mp3" type="audio/mpeg" />
+            브라우저가 오디오를 지원하지 않습니다.
+          </audio>
+        </div>
       </div>
       <div class="swiper-container bgm-swiper">
         <div class="swiper-wrapper">
@@ -277,6 +306,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- 아이콘 생성 과정 -->
     <section class="section" id="icon">
