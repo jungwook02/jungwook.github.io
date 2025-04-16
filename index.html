@@ -9,263 +9,346 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Pretendard', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      height: 100%;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  height: 100%;
+}
 
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    /* 좌측 고정 네비게이션 바 */
-    .side-nav {
-      position: fixed;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
-      background-color: #111;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
+.side-nav {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  background-color: #111;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
 
-    .side-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
-    .side-nav ul li {
-      margin-bottom: 15px;
-    }
+.side-nav ul li {
+  margin-bottom: 15px;
+}
 
-    .side-nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 1.2rem;
-      display: block;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
+.side-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
 
-    .side-nav ul li a:hover {
-      background-color: #444;
-    }
+.side-nav ul li a:hover {
+  background-color: #444;
+}
 
-    header {
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 100px 20px 20px; /* 네비게이션 바 아래로 간격을 늘려줌 */
-    }
+header {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 100px 20px 20px;
+}
 
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: #bbb;
-      margin-top: 10px;
-    }
+.subtitle {
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-top: 10px;
+}
 
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 40px 20px 60px;
-      gap: 60px;
-    }
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 60px;
+  gap: 60px;
+}
 
-    /* 섹션 수정: 최소 너비 70%, 높이 60% 설정 */
-    .section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 70%; /* 너비를 70%로 설정 */
-      margin: 0 auto;
-      background: white;
-      padding: 40px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      overflow: hidden;
-      gap: 30px; /* 텍스트와 이미지 사이의 간격을 줌 */
-      min-height: 60vh; /* 높이를 60%로 설정 */
-      scroll-margin-top: 80px; /* 섹션에 상단 간격 추가 */
-    }
+.section {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin: 0 auto;
+  background: white;
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  gap: 30px;
+  min-height: 60vh;
+  scroll-margin-top: 80px;
+}
 
-    .section-title {
-      font-size: 1.7rem;
-      margin-bottom: 20px;
-      font-weight: bold;
-      color: #222;
-    }
+.section-title {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #222;
+}
 
-    .section-text {
-      flex: 1;
-      text-align: left;
-    }
+.section-text {
+  display: flex;
+  justify-content: space-between; /* 좌우 정렬 */
+  gap: 20px; /* 요소들 간의 간격 */
+}
 
-    .section-text p {
-      font-size: 1rem;
-      color: #555;
-    }
+.section-text p {
+  font-size: 1rem;
+  color: #555;
+  flex: 1; /* 남은 공간을 채우기 위해 */
+}
 
-    .swiper-container {
-      flex: 1;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
+.bgm-player-wrapper {
+  flex: 0 0 30%; /* 고정 너비를 30%로 설정 */
+  max-width: 30%; /* 최대 너비 설정 */
+  margin-top: 20px;
+}
 
-    .swiper-wrapper {
-      width: 100%;
-    }
+.bgm-player-wrapper audio {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 6px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-    .swiper-slide {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+}
 
-    .swiper-slide img {
-      width: 100%;
-      max-width: 800px; /* 이미지가 섹션 너비에 맞도록 크기 조정 */
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 10px;
-    }
+.section-top .section-text,
+.section-top .swiper-container {
+  flex: 1;
+  max-width: 50%;
+}
 
-    .swiper-slide p {
-      font-size: 1rem;
-      color: #555;
-    }
+.section-top .swiper-slide img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
 
-    .bgm-player-wrapper {
-      width: 100%;
-      max-width: 500px;
-      margin-top: 20px;
-    }
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
-    /* 오디오 태그 자체를 커스터마이즈 */
-    .bgm-player-wrapper audio {
-      width: 100%;
-      border: none;
-      outline: none;
-      background-color: #f1f1f1;
-      border-radius: 10px;
-      padding: 6px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
+.swiper-wrapper {
+  width: 100%;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f1f1f1;
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
-    @media (prefers-color-scheme: dark) {
-      .bgm-player-wrapper audio {
-        background-color: #222;
-      }
-    }
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-    /* 모바일 반응형 디자인 */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem; /* 작은 화면에서 제목 폰트 크기 조정 */
-      }
+.swiper-slide img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
 
-      .subtitle {
-        font-size: 1rem;
-      }
+#icon > .swiper-container .swiper-slide img {
+  max-width: 100%;
+}
 
-      .section-title {
-        font-size: 1.5rem; /* 섹션 제목 크기 조정 */
-      }
+#web > .swiper-container .swiper-slide img {
+  max-width: 100%;
+}
 
-      .swiper-slide img {
-        max-width: 90%; /* 이미지 크기 조정 */
-        margin-bottom: 20px; /* 이미지와 텍스트 간 간격 조정 */
-      }
+#bgm > .swiper-container .swiper-slide img {
+  max-width: 100%;
+}
 
-      .section {
-        flex-direction: column;
-        padding: 30px 15px;
-        min-height: auto;
-        width: 100%;
-      }
-      .section-text {
-        width: 100%;
-        flex: none;
-        min-width: 0;
-        word-break: keep-all;
-        white-space: normal;
-      }
+#bgm .swiper-container .swiper-slide img {
+  width: 100%;
+  height: 50vh; /* 높이 고정 */
+  object-fit: cover; /* 화면 꽉 채우기 (잘릴 수 있음) */
+  object-position: center; /* 중앙 기준으로 잘림 */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
 
-      .swiper-container {
-        width: 100%;
-      }
-      .swiper-slide p {
-        font-size: 0.9rem; /* 텍스트 크기 줄이기 */
-      }
+#web .swiper-container .swiper-slide img {
+  width: 100%;
+  height: 50vh; /* 높이 고정 */
+  object-fit: cover; /* 화면 꽉 채우기 (잘릴 수 있음) */
+  object-position: center; /* 중앙 기준으로 잘림 */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
 
-      footer {
-        font-size: 0.8rem;
-        padding: 15px;
-      }
+#icon > .swiper-container:not(.section-top .swiper-container) .swiper-slide img {
+  width: 100%;
+  height: 50vh; /* 높이 고정 */
+  object-fit: cover; /* 화면 꽉 채우기 (잘릴 수 있음) */
+  object-position: center; /* 중앙 기준으로 잘림 */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
 
-      /* 모바일에서는 네비게이션 바 숨기기 */
-      .side-nav {
-        display: none;
-      }
-    }
+.swiper-slide p {
+  font-size: 1rem;
+  color: #555;
+}
 
-    /* 아주 작은 화면 (모바일) */
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
+.bgm-player-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
 
-      .subtitle {
-        font-size: 0.9rem;
-      }
+.bgm-player-wrapper audio {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 6px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-      .section-title {
-        font-size: 1.3rem;
-      }
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f1f1f1;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
 
-      .swiper-slide p {
-        font-size: 0.8rem;
-      }
+@media (prefers-color-scheme: dark) {
+  .bgm-player-wrapper audio {
+    background-color: #222;
+  }
+}
 
-      footer {
-        font-size: 0.7rem;
-        padding: 12px;
-      }
-    }
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .swiper-slide img {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .section {
+    flex-direction: column;
+    padding: 30px 15px;
+    min-height: auto;
+    width: 100%;
+  }
+
+  .section-top {
+    flex-direction: column;
+    display: none; /* section-top을 모바일에서 숨김 */
+  }
+
+  .section-text {
+    width: 100%;
+    flex: none;
+    display: none; /* section-text를 모바일에서 숨김 */
+  }
+
+  .swiper-container {
+    width: 100%;
+  }
+
+  .section-top .swiper-slide img {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .swiper-slide p {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+
+  .side-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .swiper-slide p {
+    font-size: 0.8rem;
+  }
+
+  footer {
+    font-size: 0.7rem;
+    padding: 12px;
+  }
+}
+
   </style>
-  
 </head>
 <body>
 
-  <!-- 좌측 고정 네비게이션 바 -->
   <div class="side-nav">
     <ul>
       <li><a href="#bgm">🎵 BGM </a></li>
@@ -280,12 +363,13 @@
   </header>
 
   <main>
-    <!-- BGM 생성 과정 -->
+    <!-- BGM -->
     <section class="section" id="bgm">
       <div class="section-text">
-        <div class="section-title">🎵 BGM 생성 과정</div>
-        <p>AI가 만든 BGM은 여러 과정을 거쳐 생성됩니다. 처음에는 사용자가 프롬프트를 입력하고, AI가 음악을 생성하는 과정을 거쳐 최종적인 결과물을 제공합니다.</p>
-        <!-- 🎵 BGM 오디오 플레이어 추가 -->
+        <div class="section-title">🎵 BGM 생성 과정
+          <p>AI가 만든 BGM은 여러 단계를 거쳐 최적의 음악을 생성합니다. 첫 번째 단계는 사용자가 원하는 음악의 스타일이나 분위기를 설정하는 프롬프트를 입력하는 것입니다. 그 후, AI는 이를 바탕으로 다양한 음악을 생성하고, 여러 트랙을 비교할 수 있게 제공합니다. 마지막으로, 생성된 음악을 자동으로 조정하여, 반복적인 요소나 감정적인 변화 등을 포함시켜 풍부한 음악을 완성합니다. 이 과정을 통해 AI는 짧은 시간 안에 개인화된 음악을 제작할 수 있습니다.</p>
+        </div>
+        
         <div class="bgm-player-wrapper">
           <audio id="bgm-audio" controls autoplay loop>
             <source src="audio/sangs.mp3" type="audio/mpeg" />
@@ -296,7 +380,7 @@
       <div class="swiper-container bgm-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="img/4.png" alt="BGM 과정 1" />
+            <img src="img/ms_1.jpg" alt="BGM 과정 1" />
             <p>프롬프트 입력 중</p>
           </div>
           <div class="swiper-slide">
@@ -307,71 +391,120 @@
       </div>
     </section>
 
-
-    <!-- 아이콘 생성 과정 -->
+    <!-- 아이콘 -->
     <section class="section" id="icon">
-      <div class="section-text">
-        <div class="section-title">🎨 아이콘 생성 과정</div>
-        <p>아이콘을 만드는 과정에서는 스타일을 지정하고, 다양한 시안을 확인한 후 선택하는 과정을 거칩니다. AI는 이를 바탕으로 최적의 디자인을 제공합니다.</p>
+      <div class="section-top">
+        <div class="section-text">
+          <div class="section-title">🎨 아이콘 생성 과정
+            <p>아이콘을 만드는 과정에서는 사용자의 요구사항을 바탕으로 다양한 스타일을 지정하고, 여러 가지 디자인 시안을 제공합니다. AI는 디자인 요소를 자동으로 생성하고, 색상, 형태, 크기 등을 조정하여 최적화된 아이콘을 만들어냅니다. 그 후, 여러 시안을 보여주고 사용자가 원하는 스타일을 선택할 수 있게 하여, 완벽한 아이콘을 최종적으로 완성합니다. 이 과정은 반복적이고 시간이 많이 소요되는 작업을 단축시키며, 창의적인 결과물을 제공하는 데 큰 도움이 됩니다.</p>
+          </div>
+          
+          <br>
+        </div>
+        <div class="swiper-container icon-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="img/ms_01.png" alt="아이콘 1" />
+              <p>1. 시안: A안</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="img/ms_02.png" alt="아이콘 2" />
+              <p>2. 시안: B안</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="img/ms_01.png" alt="아이콘 1" />
+              <p>3. 시안: C안</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="img/ms_02.png" alt="아이콘 2" />
+              <p>4. C안 선택 -> 3D 스타일로 전환 요청</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="img/ms_01.png" alt="아이콘 1" />
+              <p>5. [최종] 상상이</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="img/ms_02.png" alt="아이콘 2" />
+              <p>6. 애기 상상이</p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 하단 swiper 100% -->
       <div class="swiper-container icon-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="img/4.png" alt="아이콘 과정 1" />
-            <p>스타일 지정 및 프롬프트 입력</p>
+            <img src="img/ms_1.jpg" alt="아이콘 1" />
+            <p>1. 캐릭터 기획 알려주기</p>
           </div>
           <div class="swiper-slide">
-            <img src="img/4.png" alt="아이콘 과정 2" />
-            <p>여러 시안 중 선택</p>
+            <img src="img/ms_2.jpg" alt="아이콘 2" />
+            <p>2. 기획요소 도출</p>
+          </div>
+          <div class="swiper-slide">
+            <img src="img/ms_3.jpg" alt="아이콘 3" />
+            <p>3. 키워드 요청</p>
+          </div>
+          <div class="swiper-slide">
+            <img src="img/ms_4.jpg" alt="아이콘 4" />
+            <p>4. Sora 프롬프트 요청</p>
+          </div>
+          <div class="swiper-slide">
+            <img src="img/ms_5.jpg" alt="아이콘 5" />
+            <p>5. 이모티콘 12종 생성</p>
+          </div>
+          <div class="swiper-slide">
+            <img src="img/ms_6.jpg" alt="아이콘 6" />
+            <p>6. 최종 이모티콘 완성</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 웹 서비스 생성 과정 -->
+    <!-- 웹 서비스 -->
     <section class="section" id="web">
       <div class="section-text">
-        <div class="section-title">🖥️ 웹 서비스 생성 과정</div>
-        <p>웹 서비스를 만드는 과정에서도 마찬가지로 스타일과 기능을 지정하고, 다양한 시안과 기능을 선택하여 최종적인 웹 서비스를 만들어갑니다.</p>
+        <div class="section-title">🖥️ 웹 서비스 연동
+          <p>웹 서비스를 연동하면 다양한 AI 도구와 외부 서비스를 쉽게 사용할 수 있습니다. 예를 들어, 텍스트 분석, 이미지 생성, 데이터 처리 등 다양한 작업을 빠르고 정확하게 수행할 수 있게 됩니다. <br>또한, API를 통해 실시간으로 데이터를 불러오고, 사용자 맞춤형 기능을 제공하여 서비스의 효율성을 극대화할 수 있습니다. 이 과정은 복잡한 개발 과정을 간소화시켜, 빠르게 결과물을 얻을 수 있게 도와줍니다.</p>
+        </div>
+        
       </div>
       <div class="swiper-container web-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="img/4.png" alt="웹 서비스 과정 1" />
-            <p>스타일 지정 및 프롬프트 입력</p>
+            <img src="img/4.png" alt="웹 서비스 1" />
+            <p>5. 이모티콘 12종 생성</p>
           </div>
           <div class="swiper-slide">
-            <img src="img/4.png" alt="웹 서비스 과정 2" />
-            <p>여러 시안 중 선택</p>
+            <img src="img/4.png" alt="웹 서비스 2" />
+            <p>5. 이모티콘 12종 생성</p>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
-    만든이: 팀 뭐가좋을지몰라 🙌
+    <p>&copy; 2025 AI가 다 해줌. 모든 권리 보유.</p>
   </footer>
 
-  <!-- Swiper.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
-    new Swiper('.bgm-swiper', {
+    const swiperBgm = new Swiper('#bgm .swiper-container', {
+      spaceBetween: 10,
       loop: true,
-      allowTouchMove: true
     });
 
-    new Swiper('.icon-swiper', {
+    const swiperIcon = new Swiper('#icon .swiper-container', {
+      spaceBetween: 10,
       loop: true,
-      allowTouchMove: true
     });
 
-    new Swiper('.web-swiper', {
+    const swiperWeb = new Swiper('#web .swiper-container', {
+      spaceBetween: 10,
       loop: true,
-      allowTouchMove: true
     });
   </script>
-
 </body>
 </html>
